@@ -58,8 +58,8 @@ private:
     l len;
 
 public:
-    explicit custVector() =default;
-    explicit custVector(l n) : capacity(n), len(0), cust_array(new T[n]) {}
+    
+    explicit custVector(l n = 100) : capacity(n), len(0), cust_array(new T[n]) {}
     void push_back(T data);
     T pop_back();
     l size() const;
@@ -106,12 +106,10 @@ template<typename T> T& custVector<T>::operator[](l index)
 template <typename V> 
 void display_vector(V& v) 
 { 
-    // Declare iterator 
-    typename VectIterator ptr; 
-    for (ptr = v.begin(); ptr != v.end(); ptr++) { 
+    for (auto ptr = v.begin(); ptr != v.end(); ptr++) { 
         cout << *ptr << ' '; 
     } 
-    cout << '\n'; 
+    cout << '\n';
 } 
 
 int main()
@@ -130,5 +128,8 @@ int main()
     v.push_back(12); 
   
     display_vector(v);
+    v.pop_back();
+    cout << "size: " << v.size() << endl; 
+    cout << "v[2]: " << v[2] << '\n';
     return 0;
 }
