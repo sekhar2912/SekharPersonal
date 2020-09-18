@@ -1,2 +1,2 @@
-# SekharPersonal
+# C++ Problem Set
 C++ repo
