@@ -1,3 +1,6 @@
+// # Command to build 
+// g++ ProdCon.cpp -o prodcon -pthread -std=c++14
+
 #include <iostream>
 #include <thread>
 #include <mutex>
