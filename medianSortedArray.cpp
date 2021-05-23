@@ -3,13 +3,12 @@
 #include <algorithm>
 #include <math.h>
 
-
 using namespace std;
 
-
-class Solution {
+class Solution
+{
 public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
+    double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
     {
         if (nums1.empty() && nums2.empty())
             return 0;
@@ -39,10 +38,10 @@ public:
 
 int main()
 {
-    std::vector<int> nums1{1,3};
-    std::vector<int> nums2{2,4};
+    std::vector<int> nums1{1, 3};
+    std::vector<int> nums2{2, 4};
     Solution sobj;
-    std::cout << "Median -- " << sobj.findMedianSortedArrays(nums1,nums2) <<std::endl;
+    std::cout << "Median -- " << sobj.findMedianSortedArrays(nums1, nums2) << std::endl;
 
     return 0;
 }

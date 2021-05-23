@@ -14,24 +14,25 @@ Output: [8,9,9,9,0,0,0,1]
 
 using namespace std;
 
-
 typedef struct inode ListNode;
 
-class inode{
+class inode
+{
 public:
-  int val;
-  struct inode *next;
+    int val;
+    struct inode *next;
+
 public:
-friend void append(ListNode **q, int num);
-friend void display(ListNode *q);
-friend ListNode* addTwoNumbers(ListNode *f, ListNode *s);
-friend int count(ListNode *l);
+    friend void append(ListNode **q, int num);
+    friend void display(ListNode *q);
+    friend ListNode *addTwoNumbers(ListNode *f, ListNode *s);
+    friend int count(ListNode *l);
 };
 
 int count(ListNode *l)
 {
     int count = 0;
-    while(l != nullptr)
+    while (l != nullptr)
     {
         l = l->next;
         count++;
@@ -39,78 +40,80 @@ int count(ListNode *l)
     return count;
 }
 
-ListNode* addTwoNumbers(ListNode* f, ListNode* s) {
-      
-   int carry{0};
-   int remaining{0};
-   ListNode *ret = nullptr;
+ListNode *addTwoNumbers(ListNode *f, ListNode *s)
+{
 
-   while(f != nullptr || s != nullptr)
-   {
-       
-       auto first{0};
-       auto second{0};
-       if(f) first = f->val;
-       if(s) second = s->val;
-       int sum  = first + second + carry;
-       carry = 0;
+    int carry{0};
+    int remaining{0};
+    ListNode *ret = nullptr;
 
-       if (sum >= 10)
-       {
-        carry = 1;
-        remaining = sum -10;
-       }
-       else 
-       {
-           remaining = sum;
-       }
-           
-       append(&ret,remaining);
-       if(f) f = f->next;
-       if(s) s = s->next;
-       
-   }
-   if(carry) append(&ret,carry);
-    return ret;
-        
+    while (f != nullptr || s != nullptr)
+    {
+
+        auto first{0};
+        auto second{0};
+        if (f)
+            first = f->val;
+        if (s)
+            second = s->val;
+        int sum = first + second + carry;
+        carry = 0;
+
+        if (sum >= 10)
+        {
+            carry = 1;
+            remaining = sum - 10;
+        }
+        else
+        {
+            remaining = sum;
+        }
+
+        append(&ret, remaining);
+        if (f)
+            f = f->next;
+        if (s)
+            s = s->next;
     }
+    if (carry)
+        append(&ret, carry);
+    return ret;
+}
 
 void append(ListNode **q, int num)
 {
     ListNode *temp = nullptr;
     ListNode *nnode = nullptr;
 
-    if(*q == nullptr) // Empty List, create a new node and return
-     {
+    if (*q == nullptr) // Empty List, create a new node and return
+    {
         temp = new inode;
         temp->val = num;
         temp->next = nullptr;
         *q = temp;
-
-     }
-     else
-     {
-         // 1. Go to the end of list and append
-         temp = *q;
-         while (temp->next != nullptr)
-         {
-             temp = temp->next;
-         } 
-         nnode = new ListNode;
-         nnode->val = num;
-         nnode->next = nullptr;
-         temp->next = nnode;
-              
-     }
-   
+    }
+    else
+    {
+        // 1. Go to the end of list and append
+        temp = *q;
+        while (temp->next != nullptr)
+        {
+            temp = temp->next;
+        }
+        nnode = new ListNode;
+        nnode->val = num;
+        nnode->next = nullptr;
+        temp->next = nnode;
+    }
 }
 
 void display(ListNode *q)
 {
-    std::cout << "\n"<< std::endl;
-    while(q != nullptr)
+    std::cout << "\n"
+              << std::endl;
+    while (q != nullptr)
     {
-        std::cout<< q->val;
+        std::cout << q->val;
         q = q->next;
     }
 }

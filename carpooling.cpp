@@ -27,7 +27,6 @@ Input: trips = [[3,2,7],[3,7,9],[8,3,9]], capacity = 11
 Output: true
 */
 
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -42,14 +41,14 @@ bool carPooling(vector<vector<int>> &trips, int capacity)
     Do a boundary check.
     */
     int passengers[1001] = {0};
-        for (auto& trip: trips)
+    for (auto &trip : trips)
         for (int start = trip[1]; start < trip[2]; start++)
         {
-              passengers[start] += trip[0];
-              if (passengers[start] > capacity)
+            passengers[start] += trip[0];
+            if (passengers[start] > capacity)
                 return false;
         }
-         return true;
+    return true;
 }
 
 int main()

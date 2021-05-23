@@ -22,14 +22,15 @@ Algorithm ( sliding window protocol)
 */
 using namespace std;
 
-class Solution {
+class Solution
+{
 public:
-    int lengthOfLongestSubstring(string& s);
+    int lengthOfLongestSubstring(string &s);
 };
 
-int Solution::lengthOfLongestSubstring(string& s)
+int Solution::lengthOfLongestSubstring(string &s)
 {
-    
+
     std::unordered_set<char> containers;
     int len{static_cast<int>(s.size())};
     if (len == 0)
@@ -42,24 +43,24 @@ int Solution::lengthOfLongestSubstring(string& s)
         {
             containers.insert(s[end_ptr]);
             end_ptr++;
-            max_n = std::max(max_n,static_cast<int>(containers.size()));
+            max_n = std::max(max_n, static_cast<int>(containers.size()));
         }
         else
-        {  
+        {
             // Keeping end_ptr fixed ( at the point where duplicate is received)
             // Move the start_pointer and erase the hash container till we get the duplicate element
             // Delete duplicate element from container
             containers.erase(s[start_ptr]);
             start_ptr++;
         }
-    }  
+    }
     return max_n;
 }
 
 int main()
 {
 
-    std::string s {"abcdccc"};
+    std::string s{"abcdccc"};
     Solution obj;
     int ret = obj.lengthOfLongestSubstring(s);
     std::cout << "Max len " << ret;
