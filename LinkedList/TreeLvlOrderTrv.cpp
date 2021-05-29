@@ -18,6 +18,7 @@ public:
     friend void inorder(treenode *q);
     friend void levelorder(treenode *q);
     friend treenode* newNode(int data);
+    vector<vector<int>> levelOrder(treenode* root);
 };
 
 treenode* newNode(int data)
@@ -132,6 +133,46 @@ void levelorder(treenode *q)
         tempQ.pop_front();
     }
 }
+
+vector<vector<int>> levelOrder(treenode* root) {
+    using TreeNode = treenode;
+       std::deque<TreeNode *> tempQ;
+    std::vector<int> res;
+    vector<vector<int>>final;
+    TreeNode *t = root;
+
+    if (t != nullptr)
+    {
+        tempQ.push_back(root);
+        tempQ.push_back(nullptr);
+    }
+    auto p = tempQ.front();
+    int null_ctr = 2;
+    while (!tempQ.empty() && null_ctr >0)
+    {  
+       
+        p = tempQ.front();
+        if(p != nullptr)
+        {
+        null_ctr = 2;
+        std::cout << p->val << std::endl;
+        res.push_back(p->val);
+        if(p->left) tempQ.push_back(p->left);
+        if(p->right) tempQ.push_back(p->right);
+        
+        }
+        else
+        {  if(!res.empty())
+            final.push_back(res);
+            res.clear();
+            std::cout << "\n" << std::endl;
+            tempQ.push_back(nullptr); 
+            null_ctr --;  
+        }
+        tempQ.pop_front();
+    }
+        return final;
+    }
 int main()
 {
     treenode *t = nullptr;
@@ -140,11 +181,11 @@ int main()
     postorder(t);
 
     treenode *tl = nullptr;
-     treenode *root = newNode(1);
-    root->left = newNode(2);
-    root->right = newNode(3);
-    root->left->left = newNode(4);
-    root->left->right = newNode(5);
+     treenode *root = newNode(3);
+    root->left = newNode(9);
+    root->right = newNode(20);
+    root->right->left = newNode(15);
+    root->right->right = newNode(7);
     levelorder(root);
     return 0;
 }
