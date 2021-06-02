@@ -22,7 +22,7 @@ int maxArea(vector<int>& height) {
         
         int min_idx{0},max_idx{len-1};
         
-            
+        // Area comparison method ( from Left to Right)    
         while(min_idx<=max_idx){
             if(height[min_idx]<height[max_idx]){
                 cnt = max(cnt, (max_idx-min_idx)*height[min_idx]);
