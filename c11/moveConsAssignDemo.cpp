@@ -23,7 +23,7 @@ class TestString
         std::cout << "Move Constructor" << std::endl;
     }
 
-    TestString& operator+(TestString&& o)
+    TestString& operator=(TestString&& o)
     {
         s = std::move(o.s);
         i = std::exchange(o.i,0);

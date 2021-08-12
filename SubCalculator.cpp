@@ -12,8 +12,6 @@ String length can be up to 10^5
 
 */
 
-
-
 #include <iostream>
 #include <fstream>
 #include <bits/stdc++.h>
@@ -25,7 +23,7 @@ std::set<std::string> seen{};
 long substringCalculator(std::string s, int cnt)
 {
 
-    if ((seen.find(s) != seen.end()) || s.length() == 0)
+    if ((seen.find(s) != seen.end()) || s.length() == 0) // Element present in set or len is 0
         return 0;
 
     if (!(seen.find(s) != seen.end()))

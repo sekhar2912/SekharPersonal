@@ -1,3 +1,10 @@
+
+/*
+A fold expression is an instruction for the compiler to repeat the
+application of an operator over a variadic template pack.
+
+
+*/
 #include <iostream>
 
 using namespace std;
