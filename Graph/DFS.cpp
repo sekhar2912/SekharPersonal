@@ -33,9 +33,6 @@ void Graph::DFS(int s)
 {
     visited[s] = true;
     cout << s << " ";
-
-    // Recur for all the vertices adjacent
-    // to this vertex
     list<int>::iterator i;
     for (i = adj[s].begin(); i != adj[s].end(); ++i)
         if (!visited[*i])
